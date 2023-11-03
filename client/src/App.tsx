@@ -1,13 +1,13 @@
-import { Store } from '@client/utils/createStore';
+import { StoreProvider } from '@client/utils/createStore';
 import { Routes } from '@generouted/react-router';
 
 const storesImports = import.meta.glob<{
-	default?: Store<any>['Provider'];
+	default?: StoreProvider<any>;
 }>('./stores/*.ts', {
 	eager: true,
 });
 
-const storeContexts = new Set<Store<any>['Provider']>();
+const storeContexts = new Set<StoreProvider<any>>();
 for (const storeImport of Object.values(storesImports)) {
 	if (storeImport.default) storeContexts.add(storeImport.default);
 }
