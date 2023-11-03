@@ -17,6 +17,6 @@ for (const [importPath, storeImport] of toEntries(storesImports)) {
 
 export function App() {
 	return Array.from(storeContexts).reduce((children, Provider) => {
-		return <Provider>{children}</Provider>;
+		return Provider({ children });
 	}, <Routes />);
 }

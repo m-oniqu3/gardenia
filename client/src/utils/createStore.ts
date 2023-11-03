@@ -8,7 +8,7 @@ export type StoreProvider<State extends Record<any, any>> = ({
 }: {
 	children: ReactNode;
 	value?: State;
-}) => ReactNode;
+}) => JSX.Element;
 
 export interface Store<State extends Record<any, any>> {
 	(): State;
