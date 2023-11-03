@@ -1,10 +1,10 @@
 import { reactive } from '@client/utils/reactive';
 import { assign } from '@sa-net/utils';
-import { ReactNode, createContext, useContext } from 'react';
+import { ReactNode, createContext, createElement, useContext } from 'react';
 
 export interface Store<State extends Record<any, any>> {
 	(): State;
-	Provider: ({ children }: { children: any }) => ReactNode;
+	Provider: ({ children }: { children: ReactNode }) => ReactNode;
 }
 
 export function createStore<State extends Record<any, any>>(
@@ -20,7 +20,7 @@ export function createStore<State extends Record<any, any>>(
 
 	const Provider: Store<any>['Provider'] = ({ children }) => {
 		const state = reactive(initState);
-		return <Context.Provider value={state}>{children}</Context.Provider>;
+		return createElement(Context.Provider, { value: state }, children);
 	};
 
 	return assign(useStore, {
