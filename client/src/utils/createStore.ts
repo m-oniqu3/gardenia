@@ -37,11 +37,16 @@ export type StoreDispatch<State extends Record<string, any>> = Dispatch<
 	StoreAction<WritableKeys<State>, State[WritableKeys<State>]>
 >;
 
+export type Store<State extends Record<string, any>> = State & {
+	$dispatch: StoreDispatch<State>;
+	$provide: [State, StoreDispatch<State>];
+};
+
 export function createStore<State extends Record<string, any>>(
 	name: string,
 	setup: () => State,
 ) {
-	const Context = createContext<[State, StoreDispatch<State>] | null>(null);
+	const Context = createContext<Store<State> | null>(null);
 	Context.displayName = name;
 
 	function createStore() {
@@ -81,21 +86,15 @@ export function createStore<State extends Record<string, any>>(
 				dispatch({ prop: prop as WritableKeys<State>, value });
 				return true;
 			},
-		}) as State & {
-			$dispatch: StoreDispatch<State>;
-			$provide: [State, StoreDispatch<State>];
-		};
+		}) as Store<State>;
 	}
 
 	function useStore() {
-		const context = useContext(Context);
-		if (!context)
-			throw new Error(
-				`${name} context is not provided. Did you forget to wrap your app with <${name}Context.Provider />?}`,
-			);
+		let context = useContext(Context);
 
-		return context[0];
+		if (!context) return createStore();
+		return context;
 	}
 
-	return [createStore, useStore, Context] as const;
+	return [useStore, Context] as const;
 }

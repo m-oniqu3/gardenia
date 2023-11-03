@@ -5,12 +5,9 @@ export interface AuthState {
 	readonly isLoggedIn: boolean;
 }
 
-export const [createAuth, useAuth, AuthContext] = createStore<AuthState>(
-	'Auth',
-	() => ({
-		current: null,
-		get isLoggedIn() {
-			return this.current !== null;
-		},
-	}),
-);
+export const [useAuth, AuthContext] = createStore<AuthState>('Auth', () => ({
+	current: null,
+	get isLoggedIn() {
+		return this.current !== null;
+	},
+}));
