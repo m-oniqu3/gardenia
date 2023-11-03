@@ -11,8 +11,7 @@ export default function LoginPage() {
 	const auth = useAuth();
 	const navigate = useNavigate();
 
-	const username = ref('');
-	const password = ref('');
+	const [username, password] = [ref(''), ref('')];
 
 	async function login() {
 		try {
