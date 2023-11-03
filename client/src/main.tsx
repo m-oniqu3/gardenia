@@ -4,10 +4,6 @@ import '@client/styles/global.scss';
 import { App } from '@client/App';
 
 const root = document.getElementById('root')!;
-const app = (
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>
-);
+const app = <App />;
 
 ReactDOM.createRoot(root).render(app);

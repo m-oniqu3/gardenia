@@ -1,0 +1,10 @@
+.NavigationMain {
+	@include flex(row, space-between, center);
+	width: 100%;
+
+	menu {
+		@include flex(row, space-between, center);
+		padding: 0px;
+		margin: 0px;
+	}
+}

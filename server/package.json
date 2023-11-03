@@ -20,5 +20,10 @@
 		"vite": "^4.4.5",
 		"vite-node": "0.34.6",
 		"vite-plugin-node": "^3.0.2"
+	},
+	"dependencies": {
+		"@fastify/cookie": "^9.1.0",
+		"@sa-net/utils": "^1.0.1",
+		"fastify": "^4.24.3"
 	}
 }

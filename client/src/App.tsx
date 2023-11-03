@@ -1,22 +1,34 @@
-import { StoreProvider } from '@client/utils/createStore';
+import LoadingScreen from '@client/components/LoadingScreen';
+import { AuthContext, useAuth } from '@client/stores/auth';
+import { ref } from '@client/utils/ref';
 import { Routes } from '@generouted/react-router';
-import { toEntries } from '@sa-net/utils';
-
-const storesImports = import.meta.glob<{
-	default?: StoreProvider<any>;
-}>('./stores/*.ts', {
-	eager: true,
-});
-
-const storeContexts = new Set<StoreProvider<any>>();
-for (const [importPath, storeImport] of toEntries(storesImports)) {
-	console.info(`Loading store ${importPath}`);
-	if (storeImport.default) storeContexts.add(storeImport.default);
-	else console.warn(`No default export found for ${importPath}`);
-}
+import { useEffect } from 'react';
 
 export function App() {
-	return Array.from(storeContexts).reduce((children, Provider) => {
-		return Provider({ children });
-	}, <Routes />);
+	const auth = useAuth();
+	const hasFetchedAuth = ref(false);
+
+	async function fetchAuth() {
+		console.log('fetching auth');
+		try {
+			await auth.fetch();
+		} catch (error) {
+			console.log('unauthed user', error);
+		} finally {
+			hasFetchedAuth.value = true;
+		}
+	}
+
+	useEffect(() => {
+		fetchAuth();
+	}, []);
+
+	console.log('App', auth.current);
+
+	if (!hasFetchedAuth.value) return <LoadingScreen />;
+	return (
+		<AuthContext.Provider value={auth}>
+			<Routes />
+		</AuthContext.Provider>
+	);
 }
