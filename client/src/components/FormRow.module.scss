@@ -1,0 +1,9 @@
+.form-row {
+	@include flex(row);
+	gap: 1em;
+	flex-wrap: wrap;
+}
+
+.form-row > * {
+	flex: 1;
+}

@@ -1,0 +1,26 @@
+{
+	"name": "gardenia",
+	"version": "1.0.0",
+	"private": true,
+	"packageManager": "yarn@4.0.1",
+	"repository": "git@github.com:m-oniqu3/gardenia.git",
+	"license": "MIT",
+	"workspaces": [
+		"client",
+		"server"
+	],
+	"scripts": {
+		"server": "yarn workspace server",
+		"client": "yarn workspace client",
+		"dev": "run-p dev:server dev:client",
+		"dev:server": "yarn server dev",
+		"dev:client": "yarn client dev",
+		"build": "run-s build:server build:client",
+		"build:server": "yarn server build",
+		"build:client": "yarn client build",
+		"start": "node dist/main.js"
+	},
+	"devDependencies": {
+		"npm-run-all": "^4.1.5"
+	}
+}

@@ -1,0 +1,21 @@
+.InputField {
+	@include flex(column);
+	gap: 0.5em;
+
+	min-width: 200px;
+	text-align: left;
+}
+
+.FieldLabel,
+.FieldInput {
+	width: 100%;
+	font-size: 1em;
+}
+
+.FieldLabel {
+	font-weight: bold;
+}
+
+.FieldInput {
+	padding: 0.5em;
+}

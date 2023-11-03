@@ -1,0 +1,24 @@
+{
+	"name": "server",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "nodemon",
+		"build": "tsc && vite build",
+		"preview": "vite preview"
+	},
+	"nodemonConfig": {
+		"exec": "vite-node src/main.ts",
+		"watch": "src",
+		"ext": "ts,js,json"
+	},
+	"devDependencies": {
+		"@types/node": "^20.8.10",
+		"nodemon": "^3.0.1",
+		"typescript": "^5.0.2",
+		"vite": "^4.4.5",
+		"vite-node": "0.34.6",
+		"vite-plugin-node": "^3.0.2"
+	}
+}

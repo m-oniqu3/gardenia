@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"name": "gardenia",
+			"path": "."
+		},
+		{
+			"name": "server",
+			"path": "./server"
+		},
+		{
+			"name": "client",
+			"path": "./client"
+		}
+	],
+	"settings": {
+		"javascript.preferences.importModuleSpecifier": "non-relative",
+		"typescript.preferences.importModuleSpecifier": "non-relative",
+		"explorer.fileNesting.patterns": {
+			"*.tsx": "${capture}.ts,${capture}.module.scss,${capture}.scss"
+		}
+	}
+}
