@@ -5,7 +5,7 @@ export interface AuthState {
 	update(current: string | null): void;
 }
 
-export const useAuth = createStore<AuthState>('auth', {
+export const useAuth = createStore<AuthState>('Auth', {
 	current: null,
 	update(current: string | null) {
 		this.current = current;

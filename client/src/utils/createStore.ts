@@ -4,7 +4,13 @@ import { ReactNode, createContext, createElement, useContext } from 'react';
 
 export interface Store<State extends Record<any, any>> {
 	(): State;
-	Provider: ({ children }: { children: ReactNode }) => ReactNode;
+	Provider: ({
+		children,
+		value,
+	}: {
+		children: ReactNode;
+		value?: State;
+	}) => ReactNode;
 }
 
 export function createStore<State extends Record<any, any>>(
@@ -18,8 +24,8 @@ export function createStore<State extends Record<any, any>>(
 		return useContext(Context);
 	}
 
-	const Provider: Store<any>['Provider'] = ({ children }) => {
-		const state = reactive(initState);
+	const Provider: Store<any>['Provider'] = ({ children, value }) => {
+		const state = reactive(value ?? initState);
 		return createElement(Context.Provider, { value: state }, children);
 	};
 
