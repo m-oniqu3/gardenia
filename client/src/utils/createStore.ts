@@ -39,6 +39,7 @@ export type StoreDispatch<State extends Record<string, any>> = Dispatch<
 
 export type Store<State extends Record<string, any>> = State & {
 	$dispatch: StoreDispatch<State>;
+	$update<Key extends WritableKeys<State>>(prop: Key, value: State[Key]): void;
 };
 
 export function createStore<State extends Record<string, any>>(
@@ -78,6 +79,8 @@ export function createStore<State extends Record<string, any>>(
 		return new Proxy(state, {
 			get(target, prop, r) {
 				if (prop === '$dispatch') return dispatch;
+				if (prop === '$update')
+					return (prop: any, value: any) => dispatch({ prop, value });
 				return Reflect.get(target, prop, r);
 			},
 			set(_, prop, value) {
