@@ -39,7 +39,6 @@ export type StoreDispatch<State extends Record<string, any>> = Dispatch<
 
 export type Store<State extends Record<string, any>> = State & {
 	$dispatch: StoreDispatch<State>;
-	$provide: [State, StoreDispatch<State>];
 };
 
 export function createStore<State extends Record<string, any>>(
@@ -79,7 +78,6 @@ export function createStore<State extends Record<string, any>>(
 		return new Proxy(state, {
 			get(target, prop, r) {
 				if (prop === '$dispatch') return dispatch;
-				else if (prop === '$provide') return [target, dispatch];
 				return Reflect.get(target, prop, r);
 			},
 			set(_, prop, value) {
