@@ -1,15 +1,17 @@
 import Page from '@client/components/Page';
 import styles from './index.module.scss';
-import { useModals } from '@client/router';
 import Button from '@client/components/Button';
+import { useAuth } from '@client/stores/auth';
 
 export default function IndexPage() {
-	const modals = useModals();
+	const auth = useAuth();
 
 	return (
 		<Page className={styles.IndexPage}>
 			<h1>Hello, IndexPage</h1>
-			<Button onClick={() => modals.open('/modal')}>Open Modal</Button>
+
+			{auth.current && <p>Logged in as {auth.current}</p>}
+			<Button onClick={() => auth.update('Hello')}>Test</Button>
 		</Page>
 	);
 }

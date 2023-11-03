@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Routes } from '@generouted/react-router';
 import '@client/styles/global.scss';
+import { App } from '@client/App';
 
 const root = document.getElementById('root')!;
 const app = (
 	<React.StrictMode>
-		<Routes />
+		<App />
 	</React.StrictMode>
 );
 
