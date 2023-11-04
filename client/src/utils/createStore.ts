@@ -17,15 +17,18 @@ type MethodKeys<T> = {
 	[K in keyof T]: T[K] extends Function ? K : never;
 }[keyof T];
 
+type ReadonlyKeys<T> = {
+	[P in keyof T]-?: IfEquals<
+		{ [Q in P]: T[P] },
+		{ -readonly [Q in P]: T[P] },
+		never,
+		P
+	>;
+}[keyof T];
+
 type WritableKeys<T> = Exclude<
-	{
-		[P in keyof T]-?: IfEquals<
-			{ [Q in P]: T[P] },
-			{ -readonly [Q in P]: T[P] },
-			P
-		>;
-	}[keyof T],
-	MethodKeys<T>
+	keyof T,
+	MethodKeys<T> | ReadonlyKeys<T> | symbol
 >;
 
 export type StoreWritableState<State> = {
@@ -60,11 +63,12 @@ export type StoreDispatch<State extends Record<string, any>> = Dispatch<
 	StoreActions<State>
 >;
 
-export type Store<State extends Record<string, any>> = State & {
+export type Store<State extends Record<string, any>> = {
 	$dispatch: StoreDispatch<State>;
 	$update<Key extends WritableKeys<State>>(prop: Key, value: State[Key]): void;
 	$assign(state: StoreWritableState<State>): void;
-};
+} & Omit<State, ReadonlyKeys<State> | MethodKeys<State>> &
+	Readonly<Pick<State, ReadonlyKeys<State> | MethodKeys<State>>>;
 
 export function createStore<State extends Record<string, any>>(
 	name: string,
@@ -134,7 +138,7 @@ export function createStore<State extends Record<string, any>>(
 				});
 				return true;
 			},
-		}) as Store<State>;
+		}) as any as Store<State>;
 	}
 
 	function useStore() {
