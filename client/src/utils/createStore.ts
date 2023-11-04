@@ -112,9 +112,12 @@ export function createStore<State extends Record<string, any>>(
 		return new Proxy(state, {
 			get(target, prop, r) {
 				if (prop === '$dispatch') return dispatch;
-				if (prop === '$update')
+				else if (prop === '$update')
 					return (prop: any, value: any) =>
 						dispatch({ type: '@set', payload: { prop, value } });
+				else if (prop === '$assign')
+					return (state: any) => dispatch({ type: '@assign', payload: state });
+
 				return Reflect.get(target, prop, r);
 			},
 			set(_, prop, value) {
