@@ -13,13 +13,20 @@ type IfEquals<X, Y, A = X, B = never> = (<T>() => T extends X ? 1 : 2) extends <
 	? A
 	: B;
 
-type WritableKeys<T> = {
-	[P in keyof T]-?: IfEquals<
-		{ [Q in P]: T[P] },
-		{ -readonly [Q in P]: T[P] },
-		P
-	>;
+type MethodKeys<T> = {
+	[K in keyof T]: T[K] extends Function ? K : never;
 }[keyof T];
+
+type WritableKeys<T> = Exclude<
+	{
+		[P in keyof T]-?: IfEquals<
+			{ [Q in P]: T[P] },
+			{ -readonly [Q in P]: T[P] },
+			P
+		>;
+	}[keyof T],
+	MethodKeys<T>
+>;
 
 export type StoreWritableState<State> = {
 	[Key in WritableKeys<State>]: State[Key];
