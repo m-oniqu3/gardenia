@@ -11,6 +11,7 @@ export type StoreAction<Prop, Value> = {
 	value: Value;
 };
 
+// next two types are from https://stackoverflow.com/a/52473108/10539019
 type IfEquals<X, Y, A = X, B = never> = (<T>() => T extends X ? 1 : 2) extends <
 	T,
 >() => T extends Y ? 1 : 2
