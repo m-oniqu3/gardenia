@@ -88,7 +88,7 @@ export function createStore<State extends Record<string, any>>(
 	}
 
 	function useStore() {
-		let context = useContext(Context);
+		const context = useContext(Context);
 
 		if (!context) return createStore();
 		return context;
