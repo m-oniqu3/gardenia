@@ -30,7 +30,7 @@ export default defineConfig(env => {
 			preprocessorOptions: {
 				scss: {
 					additionalData: '@import "sassy";',
-					includePaths: ['src'],
+					includePaths: ['src/styles'],
 				},
 			},
 		},

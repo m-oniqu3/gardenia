@@ -11,10 +11,12 @@ export default defineComponent({
 <template>
 	<div class="test-page">
 		<h1>Hello, TEst!</h1>
+		<h1>Hello, TEst!</h1>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 .test-page {
+	@include flex(row);
 }
 </style>
