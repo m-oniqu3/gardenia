@@ -1,4 +1,5 @@
-import '@sa-net/utils'
+/// <reference path="@sa-net/utils" />
+/// <reference path="'@gardenia/shared'" />
 
 declare const __API_PATH__: string
 

@@ -16,5 +16,8 @@
 			"name": "client",
 			"path": "./client"
 		}
-	]
+	],
+	"settings": {
+		"typescript.preferences.importModuleSpecifier": "non-relative"
+	}
 }

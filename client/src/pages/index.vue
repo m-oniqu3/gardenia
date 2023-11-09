@@ -18,6 +18,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .index-page {
-	background-color: red;
+	// background-color: red;
 }
 </style>

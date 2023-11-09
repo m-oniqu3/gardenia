@@ -14,5 +14,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .page {
+	max-width: 800px;
+	background-color: green;
 }
 </style>

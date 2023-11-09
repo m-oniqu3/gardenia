@@ -1,17 +1,20 @@
 import { api } from '@client/plugins/api'
+import { LoginCreds, UserData } from '@gardenia/shared'
+import { isNull } from '@sa-net/utils'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export const useAuth = defineStore('auth', () => {
-	const current = ref<string | null>(null)
+	const current = ref<UserData | null>(null)
+	const isLoggedIn = computed(() => !isNull(current.value))
 
 	async function fetch() {
 		const { data } = await api.get('auth')
 		current.value = data
 	}
 
-	async function login(username: string, password: string) {
-		const { data } = await api.post('auth', { username, password })
+	async function login(creds: LoginCreds) {
+		const { data } = await api.post('auth', creds)
 		current.value = data
 	}
 
@@ -22,6 +25,7 @@ export const useAuth = defineStore('auth', () => {
 
 	return {
 		current,
+		isLoggedIn,
 		fetch,
 		login,
 		logout,

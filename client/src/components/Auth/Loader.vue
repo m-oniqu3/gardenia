@@ -12,6 +12,7 @@ export default defineComponent({
 const auth = useAuth()
 
 try {
+	console.log('fetching auth')
 	await auth.fetch()
 } catch (error) {
 	if (isAxiosError(error)) {

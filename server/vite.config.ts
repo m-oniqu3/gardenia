@@ -11,6 +11,10 @@ export default defineConfig({
 		emptyOutDir: true,
 	},
 
+	define: {
+		__APP_ROOT__: JSON.stringify(new URL('../', import.meta.url).pathname),
+	},
+
 	resolve: {
 		alias: {
 			'@server': new URL('./src', import.meta.url).pathname,

@@ -10,6 +10,8 @@ export default defineComponent({
 
 <template>
 	<Layout class="layout-default">
+		<NavigationMain />
+
 		<slot />
 	</Layout>
 </template>

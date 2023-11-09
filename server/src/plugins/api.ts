@@ -1,3 +1,8 @@
+import fastifyCookie from '@fastify/cookie'
+import fastifyCors from '@fastify/cors'
+import fastifySession from '@fastify/session'
+import { demandEnv } from '@gardenia/shared'
+import authPlugin from '@server/plugins/auth'
 import { FastifyInstance, FastifyPluginAsync } from 'fastify'
 
 const apiImports = import.meta.glob<{
@@ -7,6 +12,18 @@ const apiImports = import.meta.glob<{
 })
 
 export default async function apiPlugin(instance: FastifyInstance) {
+	await instance
+		.register(fastifyCors, {
+			origin: demandEnv('SERVER_URL'),
+			credentials: true,
+		})
+		.register(fastifyCookie)
+		.register(fastifySession, {
+			secret: demandEnv('SERVER_SESSION_SECRET'),
+		})
+
+	await authPlugin(instance)
+
 	const apiRoutes: FastifyPluginAsync[] = []
 	for (const [path, apiImport] of Object.entries(apiImports)) {
 		instance.log.info(`Loading API route: ${path}`)
