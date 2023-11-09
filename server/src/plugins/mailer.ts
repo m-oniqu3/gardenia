@@ -17,6 +17,7 @@ declare module 'fastify' {
 }
 
 export default async function mailerPlugin(instance: FastifyInstance) {
+	const from = demandEnv('SERVER_SMTP_FROM')
 	const mailer = createTransport({
 		host: demandEnv('SERVER_SMTP_HOST'),
 		port: Number(demandEnv('SERVER_SMTP_PORT')),
@@ -42,7 +43,7 @@ export default async function mailerPlugin(instance: FastifyInstance) {
 		if (!isVerified) return false
 		return await mailer.sendMail({
 			...options,
-			from: demandEnv('SERVER_SMTP_FROM'),
+			from,
 		})
 	})
 }
