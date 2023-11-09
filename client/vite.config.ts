@@ -26,6 +26,15 @@ export default defineConfig(env => {
 			},
 		},
 
+		css: {
+			preprocessorOptions: {
+				scss: {
+					additionalData: '@import "sassy";',
+					includePaths: ['src'],
+				},
+			},
+		},
+
 		server: {
 			port: parseInt(clientURL.port),
 			proxy: {
