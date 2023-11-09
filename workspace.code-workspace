@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"name": "gardenia",
+			"path": "."
+		},
+		{
+			"name": "shared",
+			"path": "./shared"
+		},
+		{
+			"name": "server",
+			"path": "./server"
+		},
+		{
+			"name": "client",
+			"path": "./client"
+		}
+	]
+}

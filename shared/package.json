@@ -1,0 +1,5 @@
+{
+	"name": "@gardenia/shared",
+	"packageManager": "yarn@4.0.1",
+	"private": true
+}
