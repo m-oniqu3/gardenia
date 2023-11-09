@@ -1,3 +1,5 @@
+import '@sa-net/utils'
+
 declare const __API_PATH__: string
 
 declare module '*.vue' {

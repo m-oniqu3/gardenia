@@ -2,22 +2,25 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'IndexPage',
+	name: 'LoadingScreen',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<LayoutDefault>
-		<Page class="index-page">
-			<h1>Hello</h1>
-		</Page>
-	</LayoutDefault>
+	<div class="loading-screen">
+		<h1>Loading...</h1>
+	</div>
 </template>
 
 <style lang="scss" scoped>
-.index-page {
-	background-color: red;
+.loading-screen {
+	@include flex(column, center, center);
+
+	width: 100vw;
+	height: 100vh;
+
+	overflow: hidden;
 }
 </style>

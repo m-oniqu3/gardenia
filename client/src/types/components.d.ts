@@ -7,8 +7,15 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AuthAuthLoader: typeof import('./../components/Auth/AuthLoader.vue')['default']
+    AuthLoader: typeof import('./../components/Auth/Loader.vue')['default']
     HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
+    Layout: typeof import('./../components/Layout.vue')['default']
+    LayoutDefault: typeof import('./../components/Layout/Default.vue')['default']
+    LayoutNoLayout: typeof import('./../components/Layout/NoLayout.vue')['default']
+    LoadingScreen: typeof import('./../components/LoadingScreen.vue')['default']
     NavigationMain: typeof import('./../components/Navigation/Main.vue')['default']
+    Page: typeof import('./../components/Page.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

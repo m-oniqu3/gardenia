@@ -2,21 +2,19 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'TestPage',
+	name: 'Layout',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<div class="test-page">
-		<h1>Hello, TEst!</h1>
-		<h1>Hello, TEst!</h1>
+	<div class="layout">
+		<slot />
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.test-page {
-	@include flex(row);
+.layout {
 }
 </style>

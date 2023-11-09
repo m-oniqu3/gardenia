@@ -2,22 +2,19 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'IndexPage',
+	name: 'LayoutDefault',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<LayoutDefault>
-		<Page class="index-page">
-			<h1>Hello</h1>
-		</Page>
-	</LayoutDefault>
+	<Layout class="layout-default">
+		<slot />
+	</Layout>
 </template>
 
 <style lang="scss" scoped>
-.index-page {
-	background-color: red;
+.layout-default {
 }
 </style>

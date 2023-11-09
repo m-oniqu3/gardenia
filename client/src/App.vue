@@ -1,7 +1,15 @@
 <script setup lang="ts"></script>
 
 <template>
-	<RouterView />
+	<Suspense>
+		<template #fallback>
+			<LoadingScreen />
+		</template>
+
+		<AuthLoader>
+			<RouterView />
+		</AuthLoader>
+	</Suspense>
 </template>
 
 <style lang="scss">
