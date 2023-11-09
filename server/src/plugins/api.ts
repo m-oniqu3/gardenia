@@ -3,6 +3,7 @@ import fastifyCors from '@fastify/cors'
 import fastifySession from '@fastify/session'
 import { demandEnv } from '@gardenia/shared'
 import authPlugin from '@server/plugins/auth'
+import mailerPlugin from '@server/plugins/mailer'
 import { FastifyInstance, FastifyPluginAsync } from 'fastify'
 
 const apiImports = import.meta.glob<{
@@ -23,6 +24,7 @@ export default async function apiPlugin(instance: FastifyInstance) {
 		})
 
 	await authPlugin(instance)
+	await mailerPlugin(instance)
 
 	const apiRoutes: FastifyPluginAsync[] = []
 	for (const [path, apiImport] of Object.entries(apiImports)) {
