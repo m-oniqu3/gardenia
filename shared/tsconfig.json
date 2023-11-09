@@ -17,12 +17,7 @@
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true,
-
-		"baseUrl": ".",
-		"paths": {
-			"@server/*": ["src/*"]
-		}
+		"noFallthroughCasesInSwitch": true
 	},
-	"include": ["src", "vite.config.ts"]
+	"include": ["./**/*.ts"]
 }

@@ -4,13 +4,30 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "nodemon",
 		"build": "tsc && vite build",
 		"preview": "vite preview"
 	},
+	"nodemonConfig": {
+		"exec": "vite-node ./src/main.ts | pino-pretty",
+		"ext": "ts,js,json",
+		"watch": [
+			"src"
+		]
+	},
 	"devDependencies": {
 		"@gardenia/shared": "workspace:*",
+		"@types/node": "^20.9.0",
+		"nodemon": "^3.0.1",
+		"pino-pretty": "^10.2.3",
 		"typescript": "^5.0.2",
-		"vite": "^4.4.5"
+		"vite": "^4.4.5",
+		"vite-node": "0.34.6",
+		"vite-plugin-node": "^3.1.0"
+	},
+	"dependencies": {
+		"@fastify/static": "^6.12.0",
+		"@sa-net/utils": "^1.0.1",
+		"fastify": "^4.24.3"
 	}
 }

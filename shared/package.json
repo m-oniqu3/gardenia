@@ -1,5 +1,13 @@
 {
 	"name": "@gardenia/shared",
 	"packageManager": "yarn@4.0.1",
-	"private": true
+	"private": true,
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"devDependencies": {
+		"vite": "^4.5.0"
+	},
+	"dependencies": {
+		"@sa-net/utils": "^1.0.1"
+	}
 }
