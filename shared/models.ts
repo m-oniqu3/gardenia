@@ -14,5 +14,12 @@ export interface ModelUUIDData extends ModelData {
 
 export interface UserData extends ModelData {
 	name: string
+	email: string
 	password?: string
+	registration: string | null
+}
+
+export interface UserRegistrationData extends ModelUUIDData {
+	userName: string
+	user?: UserData
 }
