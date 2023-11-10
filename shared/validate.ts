@@ -1,14 +1,29 @@
 /**
+ * validates username
+ * - must be 3-20 characters
+ * - must start with a letter
+ * - must contain only letters, numbers, and underscores
+ *
+ * @param input
+ * @returns boolean
+ */
+export function validateUsername(input: string): boolean {
+	const regex = /^[a-zA-Z][a-zA-Z0-9_]{2,19}$/
+	return regex.test(input)
+}
+
+/**
  * password must contain 1 number (0-9)
  * password must contain 1 uppercase letters
  * password must contain 1 lowercase letters
  * password must contain 1 non-alpha numeric number
- * password is min 8 characters with no space
+ * password is between 8 to 50 characters with no space
  *
  * @param input
  */
 export function validatePassword(input: string): boolean {
-	const regex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,}$/gm
+	const regex =
+		/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){7,50}$/gm
 	return regex.test(input)
 }
 
