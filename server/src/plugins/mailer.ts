@@ -1,18 +1,18 @@
 import { demandEnv } from '@gardenia/shared'
-import { FastifyInstance } from 'fastify'
+import { type FastifyInstance } from 'fastify'
 import {
-	Transporter,
+	type Transporter,
 	createTransport,
 	type SendMailOptions,
-	type SentMessageInfo,
 } from 'nodemailer'
+import type SMTPTransport from 'nodemailer/lib/smtp-transport'
 
 declare module 'fastify' {
 	interface FastifyInstance {
 		mailer: Transporter
 		sendMail: (
 			options: Omit<SendMailOptions, 'from'>,
-		) => Promise<SentMessageInfo | false>
+		) => Promise<SMTPTransport.SentMessageInfo | false>
 	}
 }
 
