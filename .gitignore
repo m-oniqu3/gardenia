@@ -39,3 +39,4 @@ data/*
 !.yarn/sdks
 !.yarn/versions
 
+test.http
