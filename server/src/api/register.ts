@@ -1,9 +1,9 @@
 import { demandEnv, validateEmail, validatePassword } from '@gardenia/shared'
-import { inRecord, isString } from '@sa-net/utils'
+import { inRecord } from '@sa-net/utils'
 import { User } from '@server/database/models/User'
 import { UserRegistration } from '@server/database/models/UserRegistration'
 import { ServerError } from '@server/includes/ServerError'
-import { FastifyInstance } from 'fastify'
+import { type FastifyInstance } from 'fastify'
 
 export default async function registerEndpoint(instance: FastifyInstance) {
 	instance.post<{
@@ -67,14 +67,11 @@ export default async function registerEndpoint(instance: FastifyInstance) {
 			text: `Please verify your email by clicking the link below:\n\n${registrationURL}`,
 		})
 
-		if (!sent) {
-			await user.remove()
-			await registration.remove()
-			throw new ServerError('Failed to send email', 500)
-		}
-		return {
-			success: true,
-		}
+		if (sent && sent.accepted.includes(user.email)) return { success: true }
+
+		await user.remove()
+		await registration.remove()
+		throw new ServerError('Failed to send email', 500)
 	})
 
 	instance.get<{
