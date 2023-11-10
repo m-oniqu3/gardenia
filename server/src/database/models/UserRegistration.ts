@@ -1,4 +1,4 @@
-import { UserRegistrationData } from '@gardenia/shared'
+import type { UserRegistrationData } from '@gardenia/shared'
 import { ModelUUID } from '@server/database/Model'
 import { User } from '@server/database/models/User'
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm'

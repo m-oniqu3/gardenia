@@ -1,4 +1,4 @@
-import { UserData } from '@gardenia/shared'
+import type { UserData } from '@gardenia/shared'
 import { Model } from '@server/database/Model'
 import { Column, Entity } from 'typeorm'
 

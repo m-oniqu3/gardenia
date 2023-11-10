@@ -1,5 +1,5 @@
 import { api } from '@client/plugins/api'
-import { LoginCreds, UserData } from '@gardenia/shared'
+import type { LoginCreds, UserData } from '@gardenia/shared'
 import { isNull } from '@sa-net/utils'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'

@@ -1,9 +1,9 @@
-import { LoginCreds } from '@gardenia/shared'
+import type { LoginCreds } from '@gardenia/shared'
 import { inRecord, isString, sleep } from '@sa-net/utils'
 import { User } from '@server/database/models/User'
 import { ServerError } from '@server/includes/ServerError'
 import { comparePassword } from '@server/utils/passwords'
-import { FastifyInstance } from 'fastify'
+import type { FastifyInstance } from 'fastify'
 
 export default async function authRoute(instance: FastifyInstance) {
 	instance.get('/auth', async request => {
