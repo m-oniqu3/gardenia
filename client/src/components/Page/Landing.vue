@@ -2,14 +2,14 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'LandingPage',
+	name: 'PageLanding',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<article class="landing-page">
+	<Page class="page-landing">
 		<h1>The Social Hub for Plant Enthusiasts</h1>
 		<p>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, fugit
@@ -20,12 +20,12 @@ export default defineComponent({
 			to="/register"
 			>Register</ButtonLink
 		>
-	</article>
+	</Page>
 </template>
 
 <style lang="scss" scoped>
-.landing-page {
-	background-image: url('../assets/plant-grid.png');
+.page-landing {
+	background-image: url('../../assets/plant-grid.png');
 	background-size: 100%;
 
 	background-repeat: no-repeat;

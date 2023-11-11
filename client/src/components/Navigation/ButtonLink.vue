@@ -1,8 +1,8 @@
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'ButtonLink',
+	name: 'NavigationButtonLink',
 })
 </script>
 
@@ -11,21 +11,16 @@ const props = defineProps<{
 	to: string
 	type: 'primary' | 'secondary'
 }>()
-
-const color = computed(() => {
-	if (props.type === 'primary') return 'primary'
-	else if (props.type === 'secondary') return 'secondary'
-})
 </script>
 
 <template>
-	<RouterLink
-		to="to"
-		:class="color"
+	<Link
+		:to="props.to"
+		:class="props.type"
 		class="button-link"
 	>
 		<slot />
-	</RouterLink>
+	</Link>
 </template>
 
 <style lang="scss" scoped>

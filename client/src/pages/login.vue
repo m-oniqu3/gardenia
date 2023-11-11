@@ -35,7 +35,7 @@ async function login() {
 </script>
 
 <template>
-	<Container class="login-page">
+	<Page class="login-page">
 		<form @submit.prevent="login">
 			<h1>Login</h1>
 
@@ -54,7 +54,7 @@ async function login() {
 
 			<Button type="submit">Login</Button>
 		</form>
-	</Container>
+	</Page>
 </template>
 
 <style lang="scss" scoped>

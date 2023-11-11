@@ -14,8 +14,8 @@ console.log(auth.current)
 
 <template>
 	<LayoutDefault>
-		<LandingPage v-if="!auth.current" />
-		<HomePage v-else />
+		<PageLanding v-if="!auth.current" />
+		<PageHome v-else />
 	</LayoutDefault>
 </template>
 

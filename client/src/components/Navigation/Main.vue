@@ -1,11 +1,8 @@
 <script lang="ts">
-import ButtonLink from '@client/components/Navigation/ButtonLink.vue'
-import Logo from '@client/components/Navigation/Logo.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
 	name: 'NavigationMain',
-	components: { Logo, ButtonLink },
 })
 </script>
 
@@ -14,13 +11,13 @@ export default defineComponent({
 <template>
 	<nav class="navigation-main">
 		<Container class="nav-container">
-			<Logo />
-			<ButtonLink
+			<NavigationLogo />
+			<NavigationButtonLink
 				to="/login"
 				type="secondary"
 			>
 				Login
-			</ButtonLink>
+			</NavigationButtonLink>
 		</Container>
 	</nav>
 </template>
