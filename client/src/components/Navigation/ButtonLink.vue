@@ -25,7 +25,7 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .button-link {
-	padding: 6px 20px;
+	padding: 7px 20px;
 	border-radius: 5px;
 	transition: all 0.3s ease-in-out;
 	text-decoration: none;

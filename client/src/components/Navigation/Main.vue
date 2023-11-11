@@ -14,7 +14,7 @@ export default defineComponent({
 			<NavigationLogo />
 			<NavigationButtonLink
 				to="/login"
-				type="secondary"
+				type="primary"
 			>
 				Login
 			</NavigationButtonLink>

@@ -14,6 +14,7 @@ declare module 'vue' {
     ButtonLink: typeof import('../components/Navigation/ButtonLink.vue')['default']
     Container: typeof import('./../components/Container.vue')['default']
     FormInput: typeof import('./../components/Form/Input.vue')['default']
+    Heading: typeof import('./../components/Heading.vue')['default']
     HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
     HomePage: typeof import('./../components/HomePage.vue')['default']
     Input: typeof import('./../components/Input.vue')['default']

@@ -19,18 +19,18 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Baloo Bhai');
 .navigation-logo {
 	@include flex(row, space-between, center, 0.5);
 
 	img {
-		height: 25px;
-		width: 25px;
+		height: 28px;
+		width: 28px;
 	}
 
 	figcaption {
 		font-family: 'Baloo Bhai', cursive;
-		font-size: 1.2rem;
+		font-size: clamp(1.2rem, 5vw, 1.5rem);
+		font-weight: normal;
 		color: var(--primary);
 		position: relative;
 		top: 2px;
