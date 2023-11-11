@@ -30,10 +30,12 @@ const color = computed(() => {
 
 <style lang="scss" scoped>
 .button-link {
-	padding: 7px 20px;
+	padding: 6px 20px;
 	border-radius: 5px;
 	transition: all 0.3s ease-in-out;
 	text-decoration: none;
+	font-weight: 500;
+	font-size: 0.9rem;
 	&.primary {
 		background-color: var(--primary);
 		color: var(--neutral);
