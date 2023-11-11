@@ -14,14 +14,9 @@ console.log(auth.current)
 
 <template>
 	<LayoutDefault>
-		<Container class="index-page">
-			<h1>Hello</h1>
-		</Container>
+		<LandingPage v-if="!auth.current" />
+		<HomePage v-else />
 	</LayoutDefault>
 </template>
 
-<style lang="scss" scoped>
-.index-page {
-	// background-color: red;
-}
-</style>
+<style lang="scss" scoped></style>
