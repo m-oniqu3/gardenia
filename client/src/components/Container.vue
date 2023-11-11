@@ -2,19 +2,19 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'Page',
+	name: 'Container',
 })
 </script>
 
 <template>
-	<div class="page">
+	<div class="container">
 		<slot />
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.page {
-	max-width: 800px;
-	background-color: green;
+.container {
+	width: 90%;
+	margin: 0 auto;
 }
 </style>

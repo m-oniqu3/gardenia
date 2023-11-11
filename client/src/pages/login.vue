@@ -1,7 +1,7 @@
 <script lang="ts">
 import { useAuth } from '@client/stores/auth'
 import { isAxiosError } from 'axios'
-import { defineComponent, reactive, computed } from 'vue'
+import { computed, defineComponent, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router/auto'
 
@@ -35,7 +35,7 @@ async function login() {
 </script>
 
 <template>
-	<Page class="login-page">
+	<Container class="login-page">
 		<form @submit.prevent="login">
 			<h1>Login</h1>
 
@@ -54,7 +54,7 @@ async function login() {
 
 			<Button type="submit">Login</Button>
 		</form>
-	</Page>
+	</Container>
 </template>
 
 <style lang="scss" scoped>

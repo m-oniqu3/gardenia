@@ -11,6 +11,8 @@ declare module 'vue' {
     AuthGaurd: typeof import('./../components/Auth/Gaurd.vue')['default']
     AuthLoader: typeof import('./../components/Auth/Loader.vue')['default']
     Button: typeof import('./../components/Button.vue')['default']
+    ButtonLink: typeof import('./../components/ButtonLink.vue')['default']
+    Container: typeof import('./../components/Container.vue')['default']
     FormInput: typeof import('./../components/Form/Input.vue')['default']
     HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
     Input: typeof import('./../components/Input.vue')['default']
