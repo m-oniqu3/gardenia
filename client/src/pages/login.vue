@@ -35,30 +35,33 @@ async function login() {
 </script>
 
 <template>
-	<Page class="login-page">
-		<form @submit.prevent="login">
-			<h1>Login</h1>
+	<LayoutDefault>
+		<Page class="login-page">
+			<form @submit.prevent="login">
+				<h1>Login</h1>
 
-			<InputField
-				id="username"
-				label="Username"
-				v-model="creds.username"
-			/>
+				<InputField
+					id="username"
+					label="Username"
+					v-model="creds.username"
+				/>
 
-			<InputField
-				id="password"
-				label="Password"
-				type="password"
-				v-model="creds.password"
-			/>
+				<InputField
+					id="password"
+					label="Password"
+					type="password"
+					v-model="creds.password"
+				/>
 
-			<Button type="submit">Login</Button>
-		</form>
-	</Page>
+				<Button type="submit">Login</Button>
+			</form>
+		</Page>
+	</LayoutDefault>
 </template>
 
 <style lang="scss" scoped>
 .login-page {
+	@include container;
 	@include flex(column, center, center);
 
 	form {

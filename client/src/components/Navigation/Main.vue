@@ -10,39 +10,20 @@ export default defineComponent({
 
 <template>
 	<nav class="navigation-main">
-		<Container class="nav-container">
-			<NavigationLogo />
-			<NavigationButtonLink
-				to="/login"
-				type="primary"
-			>
-				Login
-			</NavigationButtonLink>
-		</Container>
+		<NavigationLogo />
+		<NavigationButtonLink
+			to="/login"
+			type="primary"
+		>
+			Login
+		</NavigationButtonLink>
 	</nav>
 </template>
 
 <style lang="scss" scoped>
 .navigation-main {
 	height: 10dvh;
-
-	@include flex(row, center, center);
-
-	.nav-container {
-		@include flex(row, space-between, center);
-	}
+	@include container;
+	@include flex(row, space-between, center);
 }
 </style>
-
-<!-- <ButtonLink 
-				v-if="auth.current"
-				to="/login?logout=true"
-			>
-				Logout ({{ auth.current.name }})
-			</ButtonLink>
-			<RouterLink
-				v-else
-				to="/login"
-			>
-				Login
-			</RouterLink> -->

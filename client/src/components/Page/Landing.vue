@@ -10,7 +10,7 @@ export default defineComponent({
 
 <template>
 	<Page class="page-landing">
-		<Container class="content">
+		<div class="content">
 			<Heading
 				type="large"
 				color="secondary"
@@ -30,7 +30,7 @@ export default defineComponent({
 			>
 				Register
 			</NavigationButtonLink>
-		</Container>
+		</div>
 	</Page>
 </template>
 
@@ -38,7 +38,6 @@ export default defineComponent({
 .page-landing {
 	background-image: url('../../assets/plant-grid.png');
 	background-size: 100%;
-
 	background-repeat: no-repeat;
 	background-position: bottom 0px right 0px;
 	min-height: 90dvh;
@@ -54,6 +53,7 @@ export default defineComponent({
 	}
 
 	.content {
+		@include container;
 		@include flex(column, center, center);
 		text-align: center;
 		height: 80%;
