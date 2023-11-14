@@ -35,38 +35,113 @@ async function login() {
 </script>
 
 <template>
-	<LayoutDefault>
+	<LayoutDefault :show-button="false">
 		<Page class="login-page">
-			<form @submit.prevent="login">
-				<h1>Login</h1>
+			<div class="login-form">
+				<form @submit.prevent="login">
+					<header>
+						<Heading
+							type="small"
+							color="primary"
+						>
+							Log In
+						</Heading>
+						<p>Welcome back to Gardenia! Login to your account to continue.</p>
+					</header>
 
-				<InputField
-					id="username"
-					label="Username"
-					v-model="creds.username"
-				/>
+					<InputField
+						id="username"
+						label="Username"
+						v-model="creds.username"
+					/>
 
-				<InputField
-					id="password"
-					label="Password"
-					type="password"
-					v-model="creds.password"
-				/>
+					<InputField
+						id="password"
+						label="Password"
+						type="password"
+						v-model="creds.password"
+					/>
 
-				<Button type="submit">Login</Button>
-			</form>
+					<Button
+						type="submit"
+						color="primary"
+						>Login</Button
+					>
+				</form>
+			</div>
+			<div class="image">
+				<figure>
+					<img
+						src="./../assets/plant-grid-login.png"
+						alt=" Plant Grid
+				"
+					/>
+				</figure>
+			</div>
 		</Page>
 	</LayoutDefault>
 </template>
 
 <style lang="scss" scoped>
 .login-page {
-	@include container;
-	@include flex(column, center, center);
+	height: 90dvh;
 
-	form {
-		@include flex(column);
-		gap: 1em;
+	@include flex(column, center, center);
+	@include container;
+
+	@include breakpoint(medium) {
+		display: grid;
+		grid-template-columns: 40% 50%;
+		justify-content: space-between;
+	}
+
+	.login-form {
+		@include flex(row, center, center);
+		height: 100%;
+
+		form {
+			@include flex(column);
+			gap: 1rem;
+			max-width: 280px;
+
+			header {
+				p {
+					@include text;
+					margin: 0.5rem 0;
+				}
+			}
+
+			button {
+				margin-top: 1rem;
+				width: 100%;
+			}
+		}
+	}
+	.image {
+		display: none;
+		overflow: hidden;
+
+		@include breakpoint(medium) {
+			@include flex(row, center, center);
+
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			width: 50%;
+			height: 100%;
+
+			figure {
+				width: 70%;
+				height: 100%;
+
+				img {
+					width: 100%;
+					height: 100%;
+					transform: scale(1.2);
+					object-fit: contain;
+				}
+			}
+		}
 	}
 }
 </style>

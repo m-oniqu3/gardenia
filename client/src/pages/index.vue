@@ -13,7 +13,7 @@ console.log(auth.current)
 </script>
 
 <template>
-	<LayoutDefault>
+	<LayoutDefault :show-button="true">
 		<PageLanding v-if="!auth.current" />
 		<PageHome v-else />
 	</LayoutDefault>

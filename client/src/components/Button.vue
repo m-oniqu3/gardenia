@@ -10,6 +10,7 @@ export default defineComponent({
 const props = withDefaults(
 	defineProps<{
 		type?: 'button' | 'submit' | 'reset'
+		color?: 'primary' | 'secondary'
 	}>(),
 	{
 		type: 'button',
@@ -21,6 +22,7 @@ const props = withDefaults(
 	<button
 		class="button"
 		:type="props.type"
+		:class="props.color"
 	>
 		<slot />
 	</button>
@@ -28,5 +30,25 @@ const props = withDefaults(
 
 <style lang="scss" scoped>
 .button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	transition: all 0.3s ease-in-out;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 0.9rem;
+	&.primary {
+		background-color: var(--primary);
+		color: var(--neutral);
+	}
+
+	&.secondary {
+		background-color: var(--secondary);
+		color: var(--neutral);
+
+		&:hover {
+			background-color: var(--primary);
+		}
+	}
 }
 </style>

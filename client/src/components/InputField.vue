@@ -1,6 +1,5 @@
 <script lang="ts">
-import { computed } from 'vue'
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
 	name: 'InputField',
@@ -32,35 +31,30 @@ const value = computed({
 
 <template>
 	<div class="input-field">
-		<label
-			class="field-label"
-			:for="props.id"
-		>
-			{{ props.label }}
-		</label>
-
 		<input
 			:id="props.id"
 			class="field-input"
 			:type="props.type"
 			v-model="value"
+			:placeholder="props.label"
 		/>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 .input-field {
-	@include flex(column);
-	gap: 0.5em;
+	margin-bottom: 0.8rem;
+	width: 100%;
 
-	.field-label,
 	.field-input {
+		padding: 0.5rem 0;
+		border: none;
+		border-bottom: 1px solid #777777;
 		width: 100%;
-		font-size: 1em;
-	}
 
-	.field-input {
-		padding: 1em;
+		&:focus {
+			outline: none;
+		}
 	}
 }
 </style>

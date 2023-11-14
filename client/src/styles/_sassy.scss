@@ -13,7 +13,7 @@
 
 @mixin text {
 	line-height: 150%;
-	font-size: clamp(1rem, 2vw, 1.1rem);
+	font-size: 1rem;
 }
 
 // Map with breakspoints for media queries

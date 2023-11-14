@@ -6,12 +6,17 @@ export default defineComponent({
 })
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{
+	showButton: boolean
+}>()
+</script>
 
 <template>
 	<nav class="navigation-main">
 		<NavigationLogo />
 		<NavigationButtonLink
+			v-if="props.showButton"
 			to="/login"
 			type="primary"
 		>
@@ -22,6 +27,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .navigation-main {
+	z-index: -1;
 	height: 10dvh;
 	@include container;
 	@include flex(row, space-between, center);

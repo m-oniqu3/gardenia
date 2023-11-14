@@ -6,11 +6,15 @@ export default defineComponent({
 })
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{
+	showButton: boolean
+}>()
+</script>
 
 <template>
 	<Layout class="layout-default">
-		<NavigationMain />
+		<NavigationMain :show-button="props.showButton" />
 
 		<slot />
 	</Layout>
