@@ -65,14 +65,14 @@ async function login() {
 					</header>
 
 					<InputField
-						id="username"
+						name="username"
 						label="Username"
 						:hide-label="true"
 						v-model="creds.username"
 					/>
 
 					<InputField
-						id="password"
+						name="password"
 						label="Password"
 						type="password"
 						:hide-label="true"

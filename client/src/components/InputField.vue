@@ -9,7 +9,7 @@ export default defineComponent({
 <script setup lang="ts">
 const props = withDefaults(
 	defineProps<{
-		id: string
+		name: string
 		label: string
 		modelValue: any
 		hideLabel?: boolean
@@ -47,18 +47,27 @@ const rootClasses = computed(() => ({
 	>
 		<label
 			class="field-label"
-			:for="props.id"
+			:for="props.name"
 			:aria-hidden="props.hideLabel"
 		>
 			{{ props.label }}
 		</label>
 
-		<input
+		<textarea
+			v-if="props.type === 'textarea'"
 			v-bind="props.inputAttrs"
-			:id="props.id"
-			class="field-input"
-			:type="props.type"
 			v-model="value"
+			:name="props.name"
+			class="field-input"
+		></textarea>
+
+		<input
+			v-else
+			v-bind="props.inputAttrs"
+			v-model="value"
+			:name="props.name"
+			:type="props.type"
+			class="field-input"
 		/>
 	</div>
 </template>
@@ -67,6 +76,11 @@ const rootClasses = computed(() => ({
 .input-field {
 	margin-bottom: 0.8rem;
 	width: 100%;
+	.field-label {
+		@include text;
+		display: block;
+		margin-bottom: 0.5rem;
+	}
 
 	&.required {
 		.field-input::before {
@@ -78,10 +92,16 @@ const rootClasses = computed(() => ({
 	&.hide-label {
 		.field-label {
 			visibility: hidden;
+			height: 0;
 		}
 	}
 
-	.field-input {
+	textarea.field-input {
+		width: 100%;
+		resize: none;
+	}
+
+	input.field-input {
 		padding: 0.5rem 0;
 		border: none;
 		border-bottom: 1px solid #777777;
