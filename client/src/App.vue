@@ -15,8 +15,11 @@
 <style lang="scss">
 :root {
 	--primary: #355441;
+	--primary-dark: #00481c;
 	--secondary: #799473;
 	--neutral: #ffffff;
+	--error: #ff0000;
+
 	/* --tertiary: #00ff00; */
 }
 

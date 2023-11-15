@@ -1,7 +1,8 @@
 <script lang="ts">
 import { useAuth } from '@client/stores/auth'
 import { isAxiosError } from 'axios'
-import { computed, defineComponent, reactive } from 'vue'
+import type { Ref } from 'vue'
+import { computed, defineComponent, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router/auto'
 
@@ -21,6 +22,11 @@ const creds = reactive({
 	username: '',
 	password: '',
 })
+const errorMessage: Ref<string> = ref('')
+
+function clearError() {
+	if (errorMessage.value) errorMessage.value = ''
+}
 
 async function login() {
 	try {
@@ -28,8 +34,10 @@ async function login() {
 		router.push(redirect.value)
 	} catch (error) {
 		if (isAxiosError(error)) {
-			alert(error.response?.data.message ?? error.message)
-		} else alert('An error occurred')
+			errorMessage.value = error.response?.data.message ?? error.message
+		} else {
+			errorMessage.value = 'Failed to login. An error occurred.'
+		}
 	}
 }
 </script>
@@ -38,7 +46,10 @@ async function login() {
 	<LayoutDefault :show-button="false">
 		<Page class="login-page">
 			<div class="login-form">
-				<form @submit.prevent="login">
+				<form
+					@submit.prevent="login"
+					@input="clearError"
+				>
 					<header>
 						<Heading
 							type="small"
@@ -47,11 +58,16 @@ async function login() {
 							Log In
 						</Heading>
 						<p>Welcome back to Gardenia! Login to your account to continue.</p>
+
+						<p class="error">
+							{{ errorMessage }}
+						</p>
 					</header>
 
 					<InputField
 						id="username"
 						label="Username"
+						:hide-label="true"
 						v-model="creds.username"
 					/>
 
@@ -59,6 +75,7 @@ async function login() {
 						id="password"
 						label="Password"
 						type="password"
+						:hide-label="true"
 						v-model="creds.password"
 					/>
 
@@ -108,6 +125,13 @@ async function login() {
 				p {
 					@include text;
 					margin: 0.5rem 0;
+				}
+
+				.error {
+					height: 1.2rem;
+
+					font-weight: 600;
+					color: var(--error);
 				}
 			}
 

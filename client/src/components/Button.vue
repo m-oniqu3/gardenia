@@ -37,9 +37,15 @@ const props = withDefaults(
 	text-decoration: none;
 	font-weight: 500;
 	font-size: 0.9rem;
+	cursor: pointer;
+
 	&.primary {
 		background-color: var(--primary);
 		color: var(--neutral);
+
+		&:hover {
+			background-color: var(--primary-dark);
+		}
 	}
 
 	&.secondary {
