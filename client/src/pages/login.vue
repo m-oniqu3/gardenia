@@ -1,5 +1,7 @@
 <script lang="ts">
 import { useAuth } from '@client/stores/auth'
+import { useNotifications } from '@client/stores/notification'
+import { assign } from '@sa-net/utils'
 import { isAxiosError } from 'axios'
 import { computed, defineComponent, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -12,6 +14,7 @@ export default defineComponent({
 
 <script setup lang="ts">
 const auth = useAuth()
+const notification = useNotifications()
 const router = useRouter()
 const route = useRoute()
 
@@ -21,12 +24,8 @@ const creds = reactive({
 	username: '',
 	password: '',
 })
-const errorMessage = ref('')
-const loading = ref(false)
 
-function clearError() {
-	if (errorMessage.value) errorMessage.value = ''
-}
+const loading = ref(false)
 
 async function login() {
 	try {
@@ -34,13 +33,18 @@ async function login() {
 		await auth.login(creds)
 		router.push(redirect.value)
 	} catch (error) {
+		let body = ''
+
 		if (isAxiosError(error)) {
-			errorMessage.value = error.response?.data.message ?? error.message
+			body = error.response?.data.message ?? error.message
 		} else {
-			errorMessage.value = 'Failed to login. An error occurred.'
+			body = 'Something went wrong. Please try again.'
 		}
+
+		notification.push({ type: 'error', title: 'Login Failed', body })
 	} finally {
 		loading.value = false
+		assign(creds, { username: '', password: '' })
 	}
 }
 </script>
@@ -51,7 +55,7 @@ async function login() {
 			<div class="login-form">
 				<form
 					@submit.prevent="login"
-					@input="clearError"
+					ref="formRef"
 				>
 					<header>
 						<Heading
@@ -61,10 +65,6 @@ async function login() {
 							Log In
 						</Heading>
 						<p>Welcome back to Gardenia! Login to your account to continue.</p>
-
-						<p class="error">
-							{{ errorMessage }}
-						</p>
 					</header>
 
 					<InputField
@@ -131,13 +131,6 @@ async function login() {
 				p {
 					@include text;
 					margin: 0.5rem 0;
-				}
-
-				.error {
-					height: 1.2rem;
-
-					font-weight: 600;
-					color: var(--error);
 				}
 			}
 
