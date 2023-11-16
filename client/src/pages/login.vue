@@ -1,7 +1,6 @@
 <script lang="ts">
 import { useAuth } from '@client/stores/auth'
 import { isAxiosError } from 'axios'
-import type { Ref } from 'vue'
 import { computed, defineComponent, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRoute } from 'vue-router/auto'
@@ -22,7 +21,8 @@ const creds = reactive({
 	username: '',
 	password: '',
 })
-const errorMessage: Ref<string> = ref('')
+const errorMessage = ref('')
+const loading = ref(false)
 
 function clearError() {
 	if (errorMessage.value) errorMessage.value = ''
@@ -30,6 +30,7 @@ function clearError() {
 
 async function login() {
 	try {
+		loading.value = true
 		await auth.login(creds)
 		router.push(redirect.value)
 	} catch (error) {
@@ -38,6 +39,8 @@ async function login() {
 		} else {
 			errorMessage.value = 'Failed to login. An error occurred.'
 		}
+	} finally {
+		loading.value = false
 	}
 }
 </script>
@@ -82,8 +85,11 @@ async function login() {
 					<Button
 						type="submit"
 						color="primary"
-						>Login</Button
+						:disabled="loading"
 					>
+						<span v-if="loading"><BaseSpinner /></span>
+						<span v-else>Login</span>
+					</Button>
 				</form>
 			</div>
 			<div class="image">

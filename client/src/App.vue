@@ -27,10 +27,6 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-weight: 300;
-}
-
-body {
 	font-family: 'Karla', sans-serif;
 }
 

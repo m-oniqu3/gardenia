@@ -10,6 +10,7 @@ declare module 'vue' {
     AuthAuthLoader: typeof import('./../components/Auth/AuthLoader.vue')['default']
     AuthGaurd: typeof import('./../components/Auth/Gaurd.vue')['default']
     AuthLoader: typeof import('./../components/Auth/Loader.vue')['default']
+    BaseSpinner: typeof import('./../components/BaseSpinner.vue')['default']
     Button: typeof import('./../components/Button.vue')['default']
     ButtonLink: typeof import('../components/Navigation/ButtonLink.vue')['default']
     Container: typeof import('./../components/Container.vue')['default']
@@ -33,5 +34,6 @@ declare module 'vue' {
     PageLanding: typeof import('./../components/Page/Landing.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UILoading: typeof import('./../components/UI/Loading.vue')['default']
   }
 }

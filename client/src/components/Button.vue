@@ -11,6 +11,7 @@ const props = withDefaults(
 	defineProps<{
 		type?: 'button' | 'submit' | 'reset'
 		color?: 'primary' | 'secondary'
+		disabled?: boolean
 	}>(),
 	{
 		type: 'button',
@@ -23,6 +24,7 @@ const props = withDefaults(
 		class="button"
 		:type="props.type"
 		:class="props.color"
+		:disabled="props.disabled"
 	>
 		<slot />
 	</button>
@@ -30,7 +32,7 @@ const props = withDefaults(
 
 <style lang="scss" scoped>
 .button {
-	padding: 10px 20px;
+	height: 2.2rem;
 	border: none;
 	border-radius: 5px;
 	transition: all 0.3s ease-in-out;

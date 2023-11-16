@@ -76,6 +76,7 @@ const rootClasses = computed(() => ({
 .input-field {
 	margin-bottom: 0.8rem;
 	width: 100%;
+	font-weight: 300;
 	.field-label {
 		@include text;
 		display: block;
