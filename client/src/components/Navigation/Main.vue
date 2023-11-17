@@ -6,30 +6,34 @@ export default defineComponent({
 })
 </script>
 
-<script setup lang="ts">
-const props = defineProps<{
-	showButton: boolean
-}>()
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<nav class="navigation-main">
-		<NavigationLogo />
-		<NavigationButtonLink
-			v-if="props.showButton"
+		<AppLink
+			class="logo"
+			to="/"
+		>
+			<AppLogo />
+		</AppLink>
+
+		<AppLink
 			to="/login"
-			type="primary"
+			class="button-like"
 		>
 			Login
-		</NavigationButtonLink>
+		</AppLink>
 	</nav>
 </template>
 
 <style lang="scss" scoped>
 .navigation-main {
-	z-index: -1;
 	height: 10dvh;
 	@include container;
 	@include flex(row, space-between, center);
+
+	.logo {
+		text-decoration: none;
+	}
 }
 </style>

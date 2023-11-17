@@ -2,20 +2,20 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'BaseSpinner',
+	name: 'AppSpinner',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<div class="base-spinner">
+	<div class="app-spinner">
 		<span class="loader"></span>
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.base-spinner {
+.app-spinner {
 	.loader {
 		width: 18px;
 		height: 18px;

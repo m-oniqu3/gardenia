@@ -8,12 +8,12 @@
 	flex-direction: $direction;
 	justify-content: $justify;
 	align-items: $align;
-	gap: $gap * 1rem;
+	gap: $gap * 1em;
 }
 
 @mixin text {
 	line-height: 150%;
-	font-size: 1rem;
+	font-size: 1em;
 	font-weight: 300;
 }
 

@@ -1,39 +1,39 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'Heading',
+	name: 'AppHeading',
 })
 </script>
 
 <script setup lang="ts">
-defineProps<{
-	type: 'small' | 'medium' | 'large'
-	color: 'primary' | 'secondary'
-}>()
+const props = withDefaults(
+	defineProps<{
+		type?: 'small' | 'medium' | 'large'
+		color?: 'primary' | 'secondary'
+	}>(),
+	{
+		type: 'medium',
+		color: 'primary',
+	},
+)
+
+const color = computed(() => `color-${props.color}`)
 </script>
 
 <template>
 	<h1
-		:class="[type, color]"
-		class="heading"
+		:class="[props.type, color]"
+		class="app-heading"
 	>
 		<slot />
 	</h1>
 </template>
 
 <style lang="scss" scoped>
-.heading {
+.app-heading {
 	font-weight: 800;
 	line-height: 120%;
-
-	&.primary {
-		color: var(--primary);
-	}
-
-	&.secondary {
-		color: var(--secondary);
-	}
 
 	&.small {
 		font-weight: 700;

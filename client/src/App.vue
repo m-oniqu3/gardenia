@@ -28,9 +28,6 @@
 
 * {
 	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: 'Karla', sans-serif;
 }
 
 html,
@@ -38,5 +35,8 @@ body,
 #app {
 	margin: 0;
 	padding: 0;
+	font-family: 'Karla', sans-serif;
 }
+
+@import '@/styles/global.scss';
 </style>

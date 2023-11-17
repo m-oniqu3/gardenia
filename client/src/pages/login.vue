@@ -50,20 +50,20 @@ async function login() {
 </script>
 
 <template>
-	<Page class="login-page">
-		<NavigationLogo />
+	<AppPage class="login-page">
+		<AppLink
+			class="logo"
+			to="/"
+		>
+			<AppLogo />
+		</AppLink>
 
 		<form
 			class="login-form"
 			@submit.prevent="login"
 		>
 			<header>
-				<Heading
-					type="small"
-					color="primary"
-				>
-					Log In
-				</Heading>
+				<AppHeading type="small"> Log In </AppHeading>
 
 				<p class="welcome-text">
 					Welcome back to Gardenia! Login to your account to continue.
@@ -85,14 +85,14 @@ async function login() {
 				v-model="creds.password"
 			/>
 
-			<Button
+			<AppButton
 				type="submit"
 				color="primary"
 				:disabled="loading"
 			>
-				<BaseSpinner v-if="loading" />
+				<AppSpinner v-if="loading" />
 				<template v-else>Login</template>
-			</Button>
+			</AppButton>
 		</form>
 
 		<figure class="image">
@@ -101,7 +101,7 @@ async function login() {
 				alt="Plant Grid"
 			/>
 		</figure>
-	</Page>
+	</AppPage>
 </template>
 
 <style lang="scss" scoped>
@@ -112,6 +112,7 @@ async function login() {
 	grid-template-areas: 'logo image' 'login-form image';
 
 	height: 100vh;
+	overflow: hidden;
 
 	@include container;
 	@include breakpoint(medium) {
@@ -120,9 +121,10 @@ async function login() {
 		grid-template-areas: 'logo image' 'login-form image';
 	}
 
-	.navigation-logo {
-		justify-content: flex-start;
+	.logo {
 		grid-area: logo;
+		text-decoration: none;
+		align-self: center;
 	}
 
 	.login-form {

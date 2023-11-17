@@ -2,17 +2,18 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'Page',
+	name: 'AppPage',
 })
 </script>
 
 <template>
-	<div class="page">
+	<div class="app-page">
 		<slot />
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.page {
+.app-page {
+	width: 100%;
 }
 </style>

@@ -2,25 +2,25 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'NavigationLogo',
+	name: 'AppLogo',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<figure class="navigation-logo">
+	<figure class="app-logo">
 		<img
 			src="@/assets/gardenia-logo.png"
 			alt="gardenia logo"
 		/>
-		<figcaption>gardenia</figcaption>
+		<figcaption class="color-primary">gardenia</figcaption>
 	</figure>
 </template>
 
 <style lang="scss" scoped>
-.navigation-logo {
-	@include flex(row, space-between, center, 0.5);
+.app-logo {
+	@include flex(row, flex-start, center, 0.5);
 
 	img {
 		height: 28px;
@@ -31,7 +31,6 @@ export default defineComponent({
 		font-family: 'Baloo Bhai', cursive;
 		font-size: clamp(1.2rem, 5vw, 1.5rem);
 		font-weight: normal;
-		color: var(--primary);
 		position: relative;
 		top: 2px;
 	}

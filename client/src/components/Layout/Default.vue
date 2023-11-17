@@ -6,21 +6,18 @@ export default defineComponent({
 })
 </script>
 
-<script setup lang="ts">
-const props = defineProps<{
-	showButton: boolean
-}>()
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<Layout class="layout-default">
-		<NavigationMain :show-button="props.showButton" />
+	<AppLayout class="layout-default">
+		<NavigationMain />
 
 		<slot />
-	</Layout>
+	</AppLayout>
 </template>
 
 <style lang="scss" scoped>
 .layout-default {
+	@include flex(column);
 }
 </style>

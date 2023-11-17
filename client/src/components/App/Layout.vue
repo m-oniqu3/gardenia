@@ -2,19 +2,20 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'Layout',
+	name: 'AppLayout',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<div class="layout">
+	<div class="app-layout">
 		<slot />
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.layout {
+.app-layout {
+	width: 100%;
 }
 </style>

@@ -9,7 +9,7 @@ export default defineComponent({
 <script setup lang="ts"></script>
 
 <template>
-	<Page class="page-home"></Page>
+	<AppPage class="page-home"></AppPage>
 </template>
 
 <style lang="scss" scoped>

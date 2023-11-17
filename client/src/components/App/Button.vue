@@ -2,38 +2,53 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'NavigationButtonLink',
+	name: 'AppButton',
 })
 </script>
 
 <script setup lang="ts">
-const props = defineProps<{
-	to: string
-	type: 'primary' | 'secondary'
-}>()
+const props = withDefaults(
+	defineProps<{
+		type?: 'button' | 'submit' | 'reset'
+		color?: 'primary' | 'secondary'
+		disabled?: boolean
+	}>(),
+	{
+		type: 'button',
+	},
+)
 </script>
 
 <template>
-	<Link
-		:to="props.to"
-		:class="props.type"
-		class="button-link"
+	<button
+		class="app-button"
+		:type="props.type"
+		:class="props.color"
+		:disabled="props.disabled"
 	>
 		<slot />
-	</Link>
+	</button>
 </template>
 
 <style lang="scss" scoped>
-.button-link {
-	padding: 7px 20px;
+.app-button {
+	padding: 0.5em 1em;
+	border: none;
 	border-radius: 5px;
 	transition: all 0.3s ease-in-out;
 	text-decoration: none;
 	font-weight: 500;
-	font-size: 0.9rem;
+	font-size: 0.9em;
+	font-family: inherit;
+	cursor: pointer;
+
 	&.primary {
 		background-color: var(--primary);
 		color: var(--neutral);
+
+		&:hover {
+			background-color: var(--primary-dark);
+		}
 	}
 
 	&.secondary {

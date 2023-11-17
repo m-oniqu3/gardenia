@@ -7,6 +7,14 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppBaseSpinner: typeof import('./../components/App/BaseSpinner.vue')['default']
+    AppButton: typeof import('./../components/App/Button.vue')['default']
+    AppHeading: typeof import('./../components/App/Heading.vue')['default']
+    AppLayout: typeof import('./../components/App/Layout.vue')['default']
+    AppLink: typeof import('./../components/App/Link.vue')['default']
+    AppLogo: typeof import('./../components/App/Logo.vue')['default']
+    AppPage: typeof import('./../components/App/Page.vue')['default']
+    AppSpinner: typeof import('./../components/App/Spinner.vue')['default']
     AuthAuthLoader: typeof import('./../components/Auth/AuthLoader.vue')['default']
     AuthGaurd: typeof import('./../components/Auth/Gaurd.vue')['default']
     AuthLoader: typeof import('./../components/Auth/Loader.vue')['default']

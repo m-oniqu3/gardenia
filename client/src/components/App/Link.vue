@@ -2,7 +2,7 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'ConstructLink',
+	name: 'AppLink',
 })
 </script>
 
@@ -20,13 +20,38 @@ const attrName = computed(() => (isInternal.value ? 'to' : 'href'))
 	<component
 		:is="tagName"
 		:[attrName]="props.to"
-		class="construct-link"
+		class="app-link"
 	>
 		<slot />
 	</component>
 </template>
 
 <style lang="scss" scoped>
-.construct-link {
+.app-link {
+}
+
+.app-link.button-like {
+	padding: 0.5em 1em;
+	border-radius: 5px;
+	transition: background-color 0.3s ease-in-out;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 0.9em;
+
+	background-color: var(--primary);
+	color: var(--neutral);
+
+	&:hover {
+		background-color: var(--primary-dark);
+	}
+
+	&.secondary {
+		background-color: var(--secondary);
+		color: var(--neutral);
+
+		&:hover {
+			background-color: var(--primary);
+		}
+	}
 }
 </style>
