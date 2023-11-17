@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useNotifications } from '@client/stores/notification'
+
+const notifications = useNotifications()
+</script>
 
 <template>
 	<Suspense>
@@ -10,6 +14,8 @@
 			<RouterView />
 		</AuthLoader>
 	</Suspense>
+
+	<NotificationDisplay v-if="notifications.items.size" />
 </template>
 
 <style lang="scss">

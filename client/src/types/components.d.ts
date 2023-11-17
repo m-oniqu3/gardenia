@@ -29,6 +29,8 @@ declare module 'vue' {
     NavigationButtonLink: typeof import('./../components/Navigation/ButtonLink.vue')['default']
     NavigationLogo: typeof import('./../components/Navigation/Logo.vue')['default']
     NavigationMain: typeof import('./../components/Navigation/Main.vue')['default']
+    NotificationDisplay: typeof import('./../components/Notification/Display.vue')['default']
+    NotificationItem: typeof import('./../components/Notification/Item.vue')['default']
     Page: typeof import('./../components/Page.vue')['default']
     PageHome: typeof import('./../components/Page/Home.vue')['default']
     PageLanding: typeof import('./../components/Page/Landing.vue')['default']
