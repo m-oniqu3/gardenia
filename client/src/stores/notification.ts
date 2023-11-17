@@ -8,7 +8,7 @@ export interface Notification {
 	duration?: number
 }
 
-export const useNotifications = defineStore('notification', () => {
+export const useNotifications = defineStore('notifications', () => {
 	const items = reactive(new Set<Notification>())
 
 	function push(item: Notification) {

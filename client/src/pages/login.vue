@@ -50,119 +50,115 @@ async function login() {
 </script>
 
 <template>
-	<LayoutDefault :show-button="false">
-		<Page class="login-page">
-			<div class="login-form">
-				<form
-					@submit.prevent="login"
-					ref="formRef"
+	<Page class="login-page">
+		<NavigationLogo />
+
+		<form
+			class="login-form"
+			@submit.prevent="login"
+		>
+			<header>
+				<Heading
+					type="small"
+					color="primary"
 				>
-					<header>
-						<Heading
-							type="small"
-							color="primary"
-						>
-							Log In
-						</Heading>
-						<p>Welcome back to Gardenia! Login to your account to continue.</p>
-					</header>
+					Log In
+				</Heading>
 
-					<InputField
-						name="username"
-						label="Username"
-						:hide-label="true"
-						v-model="creds.username"
-					/>
+				<p class="welcome-text">
+					Welcome back to Gardenia! Login to your account to continue.
+				</p>
+			</header>
 
-					<InputField
-						name="password"
-						label="Password"
-						type="password"
-						:hide-label="true"
-						v-model="creds.password"
-					/>
+			<InputField
+				name="username"
+				label="Username"
+				:hide-label="true"
+				v-model="creds.username"
+			/>
 
-					<Button
-						type="submit"
-						color="primary"
-						:disabled="loading"
-					>
-						<span v-if="loading"><BaseSpinner /></span>
-						<span v-else>Login</span>
-					</Button>
-				</form>
-			</div>
-			<div class="image">
-				<figure>
-					<img
-						src="./../assets/plant-grid-login.png"
-						alt=" Plant Grid
-				"
-					/>
-				</figure>
-			</div>
-		</Page>
-	</LayoutDefault>
+			<InputField
+				name="password"
+				label="Password"
+				type="password"
+				:hide-label="true"
+				v-model="creds.password"
+			/>
+
+			<Button
+				type="submit"
+				color="primary"
+				:disabled="loading"
+			>
+				<BaseSpinner v-if="loading" />
+				<template v-else>Login</template>
+			</Button>
+		</form>
+
+		<figure class="image">
+			<img
+				src="@/assets/plant-grid-login.png"
+				alt="Plant Grid"
+			/>
+		</figure>
+	</Page>
 </template>
 
 <style lang="scss" scoped>
 .login-page {
-	height: 90dvh;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 10dvh 1fr;
+	grid-template-areas: 'logo image' 'login-form image';
 
-	@include flex(column, center, center);
+	height: 100vh;
+
 	@include container;
-
 	@include breakpoint(medium) {
-		display: grid;
-		grid-template-columns: 40% 50%;
-		justify-content: space-between;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 10dvh 1fr;
+		grid-template-areas: 'logo image' 'login-form image';
+	}
+
+	.navigation-logo {
+		justify-content: flex-start;
+		grid-area: logo;
 	}
 
 	.login-form {
-		@include flex(row, center, center);
-		height: 100%;
+		@include flex(column);
+		gap: 1rem;
+		max-width: 280px;
+		grid-area: login-form;
 
-		form {
-			@include flex(column);
-			gap: 1rem;
-			max-width: 280px;
+		align-self: center;
+		justify-self: center;
 
-			header {
-				p {
-					@include text;
-					margin: 0.5rem 0;
-				}
-			}
+		.welcome-text {
+			@include text;
+			margin: 0.5rem 0;
+		}
 
-			button {
-				margin-top: 1rem;
-				width: 100%;
-			}
+		button {
+			margin-top: 1rem;
+			width: 100%;
 		}
 	}
 	.image {
 		display: none;
 		overflow: hidden;
+		grid-area: image;
 
 		@include breakpoint(medium) {
 			@include flex(row, center, center);
 
-			position: absolute;
-			top: 0px;
-			right: 0px;
-			width: 50%;
+			flex: 50%;
 			height: 100%;
 
-			figure {
-				width: 70%;
-				height: 100%;
-
-				img {
-					width: 100%;
-					height: 100%;
-					transform: scale(1.2);
-					object-fit: contain;
-				}
+			img {
+				width: 100%;
+				height: 110%;
+				object-fit: contain;
 			}
 		}
 	}

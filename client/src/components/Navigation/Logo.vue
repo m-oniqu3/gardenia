@@ -11,7 +11,7 @@ export default defineComponent({
 <template>
 	<figure class="navigation-logo">
 		<img
-			src="../../assets/gardenia-logo.png"
+			src="@/assets/gardenia-logo.png"
 			alt="gardenia logo"
 		/>
 		<figcaption>gardenia</figcaption>

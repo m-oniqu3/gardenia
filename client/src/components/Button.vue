@@ -32,13 +32,13 @@ const props = withDefaults(
 
 <style lang="scss" scoped>
 .button {
-	height: 2.2rem;
+	padding: 0.5em 1em;
 	border: none;
 	border-radius: 5px;
 	transition: all 0.3s ease-in-out;
 	text-decoration: none;
 	font-weight: 500;
-	font-size: 0.9rem;
+	font-size: 0.9em;
 	cursor: pointer;
 
 	&.primary {
