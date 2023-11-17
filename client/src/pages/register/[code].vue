@@ -2,22 +2,19 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'LayoutDefault',
+	name: 'RegisterVerifyPage',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<AppLayout class="layout-default">
-		<NavigationMain />
-
-		<slot />
-	</AppLayout>
+	<AppPage class="register-verify-page">
+		<h1>Helo</h1>
+	</AppPage>
 </template>
 
 <style lang="scss" scoped>
-.layout-default {
-	@include flex(column);
+.register-verify-page {
 }
 </style>

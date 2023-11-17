@@ -1,5 +1,5 @@
 import { api } from '@client/plugins/api'
-import { LoginCreds, UserData } from '@gardenia/shared'
+import type { LoginCreds, UserData } from '@gardenia/shared'
 import { isNull } from '@sa-net/utils'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -23,11 +23,27 @@ export const useAuth = defineStore('auth', () => {
 		await api.delete('auth')
 	}
 
+	async function register(user: {
+		name: string
+		email: string
+		password: string
+	}) {
+		const { data } = await api.post<{ success: true }>('register', user)
+		return data
+	}
+
+	async function verifyRegistration(code: string) {
+		const { data } = await api.get<UserData>(`register/${code}`)
+		return data
+	}
+
 	return {
 		current,
 		isLoggedIn,
 		fetch,
 		login,
 		logout,
+		register,
+		verifyRegistration,
 	}
 })

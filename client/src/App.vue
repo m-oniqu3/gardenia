@@ -7,6 +7,7 @@
 		</template>
 
 		<AuthLoader>
+			<NotificationDisplay />
 			<RouterView />
 		</AuthLoader>
 	</Suspense>
@@ -14,9 +15,15 @@
 
 <style lang="scss">
 :root {
-	--primary: #ff0000;
-	--secondary: #0000ff;
-	--tertiary: #00ff00;
+	--primary: #355441;
+	--primary-text: white;
+	--primary-dark: #00481c;
+	--secondary: #799473;
+	--secondary-text: white;
+	--neutral: #ffffff;
+	--error: #ff0000;
+
+	/* --tertiary: #00ff00; */
 }
 
 * {
@@ -28,5 +35,8 @@ body,
 #app {
 	margin: 0;
 	padding: 0;
+	font-family: 'Karla', sans-serif;
 }
+
+@import '@/styles/global.scss';
 </style>

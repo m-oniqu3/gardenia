@@ -2,22 +2,18 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'LayoutDefault',
+	name: 'AppPage',
 })
 </script>
 
-<script setup lang="ts"></script>
-
 <template>
-	<AppLayout class="layout-default">
-		<NavigationMain />
-
+	<div class="app-page">
 		<slot />
-	</AppLayout>
+	</div>
 </template>
 
 <style lang="scss" scoped>
-.layout-default {
-	@include flex(column);
+.app-page {
+	width: 100%;
 }
 </style>

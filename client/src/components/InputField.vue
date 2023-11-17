@@ -1,6 +1,5 @@
 <script lang="ts">
-import { computed } from 'vue'
-import { defineComponent } from 'vue'
+import { computed, defineComponent, defineProps, withDefaults } from 'vue'
 
 export default defineComponent({
 	name: 'InputField',
@@ -10,13 +9,19 @@ export default defineComponent({
 <script setup lang="ts">
 const props = withDefaults(
 	defineProps<{
-		id: string
+		name: string
 		label: string
 		modelValue: any
+		hideLabel?: boolean
+		inputAttrs?: Record<string, any>
 		type?: string
 	}>(),
 	{
 		type: 'text',
+		inputAttrs: props => ({
+			placeholder: props.label,
+			required: true,
+		}),
 	},
 )
 
@@ -28,39 +33,88 @@ const value = computed({
 	get: () => props.modelValue,
 	set: value => emit('update:modelValue', value),
 })
+
+const rootClasses = computed(() => ({
+	'hide-label': props.hideLabel,
+	required: props.inputAttrs.required,
+}))
 </script>
 
 <template>
-	<div class="input-field">
+	<div
+		class="input-field"
+		:class="rootClasses"
+	>
 		<label
 			class="field-label"
-			:for="props.id"
+			:for="props.name"
+			:aria-hidden="props.hideLabel"
 		>
 			{{ props.label }}
 		</label>
 
-		<input
-			:id="props.id"
-			class="field-input"
-			:type="props.type"
+		<textarea
+			v-if="props.type === 'textarea'"
+			v-bind="props.inputAttrs"
 			v-model="value"
+			:name="props.name"
+			class="field-input"
+		></textarea>
+
+		<input
+			v-else
+			v-bind="props.inputAttrs"
+			v-model="value"
+			:name="props.name"
+			:type="props.type"
+			class="field-input"
 		/>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 .input-field {
-	@include flex(column);
-	gap: 0.5em;
-
-	.field-label,
-	.field-input {
-		width: 100%;
-		font-size: 1em;
+	margin-bottom: 0.8rem;
+	width: 100%;
+	font-weight: 300;
+	.field-label {
+		@include text;
+		display: block;
+		margin-bottom: 0.5rem;
 	}
 
-	.field-input {
-		padding: 1em;
+	&.required {
+		.field-input::before {
+			content: '*';
+			color: red;
+		}
+	}
+
+	&.hide-label {
+		.field-label {
+			visibility: hidden;
+			height: 0;
+		}
+	}
+
+	textarea.field-input {
+		width: 100%;
+		resize: none;
+	}
+
+	input.field-input {
+		padding: 0.5rem 0;
+		border: none;
+		border-bottom: 1px solid #777777;
+		width: 100%;
+
+		&:focus {
+			outline: none;
+		}
+
+		&::placeholder {
+			color: #777777;
+		}
 	}
 }
 </style>

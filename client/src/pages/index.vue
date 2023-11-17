@@ -1,4 +1,5 @@
 <script lang="ts">
+import { useAuth } from '@client/stores/auth'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -6,18 +7,19 @@ export default defineComponent({
 })
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const auth = useAuth()
+</script>
 
 <template>
 	<LayoutDefault>
-		<Page class="index-page">
-			<h1>Hello</h1>
-		</Page>
+		<PageLanding v-if="!auth.current" />
+		<PageHome v-else />
 	</LayoutDefault>
 </template>
 
 <style lang="scss" scoped>
-.index-page {
-	// background-color: red;
+.layout-default {
+	height: 100dvh;
 }
 </style>

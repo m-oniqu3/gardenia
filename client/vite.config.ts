@@ -22,6 +22,7 @@ export default defineConfig(env => {
 
 		resolve: {
 			alias: {
+				'@': new URL('./src', import.meta.url).pathname,
 				'@client': new URL('./src', import.meta.url).pathname,
 			},
 		},

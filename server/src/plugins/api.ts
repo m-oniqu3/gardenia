@@ -4,7 +4,7 @@ import fastifySession from '@fastify/session'
 import { demandEnv } from '@gardenia/shared'
 import authPlugin from '@server/plugins/auth'
 import mailerPlugin from '@server/plugins/mailer'
-import { FastifyInstance, FastifyPluginAsync } from 'fastify'
+import type { FastifyInstance, FastifyPluginAsync } from 'fastify'
 
 const apiImports = import.meta.glob<{
 	default: FastifyPluginAsync

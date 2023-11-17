@@ -1,9 +1,10 @@
 import { env } from '@gardenia/shared'
-import { ClassType, toEntries } from '@sa-net/utils'
+import type { ClassType } from '@sa-net/utils'
+import { toEntries } from '@sa-net/utils'
 import { User } from '@server/database/models/User'
 import { hashPassword } from '@server/utils/passwords'
 import { resolveFromRoot } from '@server/utils/resolveFromRoot'
-import { FastifyInstance } from 'fastify'
+import type { FastifyInstance } from 'fastify'
 import { BaseEntity, DataSource } from 'typeorm'
 
 declare module 'fastify' {

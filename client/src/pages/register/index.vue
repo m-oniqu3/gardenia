@@ -2,19 +2,17 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'Layout',
+	name: 'RegisterPage',
 })
 </script>
 
 <script setup lang="ts"></script>
 
 <template>
-	<div class="layout">
-		<slot />
-	</div>
+	<div class="register-page">register</div>
 </template>
 
 <style lang="scss" scoped>
-.layout {
+.register-page {
 }
 </style>
